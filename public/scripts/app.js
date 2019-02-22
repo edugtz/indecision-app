@@ -27,6 +27,20 @@ var IndecisionApp = function (_React$Component) {
     }
 
     _createClass(IndecisionApp, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            console.log('Fetching data');
+        }
+    }, {
+        key: 'componentDidUpdate',
+        value: function componentDidUpdate(prevProps, prevState) {
+            if (prevState.options.length !== this.state.options.length) {
+                console.log('Saving data');
+                var json = JSON.stringify(this.state.options);
+                localStorage.setItem('options', json);
+            }
+        }
+    }, {
         key: 'handlePick',
         value: function handlePick() {
             var randomNumber = Math.floor(Math.random() * this.state.options.length);
@@ -166,10 +180,11 @@ var Option = function Option(props) {
         'div',
         null,
         React.createElement(
-            'p',
+            'b',
             null,
             props.option
         ),
+        '\xA0',
         React.createElement(
             'button',
             { onClick: function onClick() {

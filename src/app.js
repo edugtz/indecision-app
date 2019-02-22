@@ -10,6 +10,18 @@ class IndecisionApp extends React.Component {
         };
     }
 
+    componentDidMount() {
+        console.log('Fetching data');
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        if (prevState.options.length !== this.state.options.length) {
+            console.log('Saving data');
+            const json = JSON.stringify(this.state.options);
+            localStorage.setItem('options', json);
+        }
+    }
+
     handlePick() {
         const randomNumber = Math.floor(Math.random() * this.state.options.length);
 
@@ -121,8 +133,8 @@ const Options = (props) => {
 const Option = (props) => {
     return(
         <div>
-            <p>{props.option}</p>
-            <button onClick={() => props.handleDeleteOption(props.option)}>Remove</button>
+            <b>{props.option}</b>
+            &nbsp;<button onClick={() => props.handleDeleteOption(props.option)}>Remove</button>
         </div>
     );
 }
