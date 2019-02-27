@@ -1,3 +1,10 @@
-import { square } from './utils';
-console.log('Hello');
-console.log(square(3));
+import ReactDOM from 'react-dom';
+import React from 'react'
+import IndecisionApp from "./components/IndecisionApp";
+
+class Old {
+    state = 20;
+    console.log(state);
+}
+
+ReactDOM.render(<IndecisionApp />, document.getElementById('app'));
