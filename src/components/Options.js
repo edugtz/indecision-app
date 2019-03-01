@@ -2,6 +2,7 @@ import React from 'react';
 import Option from '../components/Option';
 
 const Options = (props) => {
+    // console.log(props);
     return (
         <div>
             <button onClick={props.handleDeleteOptions}>Remove All</button>
