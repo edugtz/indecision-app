@@ -52,7 +52,7 @@ class IndecisionApp extends React.Component {
     
     handleAddOption = option => {
         if (!option) {
-            return 'Enter valid value';
+            return 'Enter a valid value';
         } else if (this.state.options.indexOf(option) >= 0) {
             return 'This option already exists';
         }
@@ -78,18 +78,22 @@ class IndecisionApp extends React.Component {
                 <Header 
                     subtitle={subtitle}
                 />
-                <Action
-                    hasOptions={this.state.options && this.state.options.length > 0}
-                    handlePick={this.handlePick}
-                 />
-                <Options 
-                    options={this.state.options}
-                    handleDeleteOptions={this.handleDeleteOptions}
-                    handleDeleteOption={this.handleDeleteOption}
-                />
-                <AddOption
-                    handleAddOption={this.handleAddOption}
-                 />
+                <div className="container">
+                    <Action
+                        hasOptions={this.state.options && this.state.options.length > 0}
+                        handlePick={this.handlePick}
+                    />
+                    <div className="widget">
+                        <Options 
+                            options={this.state.options}
+                            handleDeleteOptions={this.handleDeleteOptions}
+                            handleDeleteOption={this.handleDeleteOption}
+                        />
+                        <AddOption
+                            handleAddOption={this.handleAddOption}
+                        />
+                    </div>
+                </div>
                  <OptionModal
                     selectedOption={this.state.selectedOption}
                     clearSelectedOption={this.handleClearSelectedOption}
